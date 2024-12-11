@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "API.Controllers.AdministratorController",
-    "Method": "getAdministrators",
+    "Method": "GetAdministrators",
     "RelativePath": "api/Administrator",
     "HttpMethod": "GET",
     "IsController": true,

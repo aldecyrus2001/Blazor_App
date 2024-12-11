@@ -1,0 +1,170 @@
+﻿@page "/Administrator/Edit/{Id:int}"
+
+<div class="row">
+	<div class="col-lg-8">
+		<h1 class="mb-5">Edit Administrator</h1>
+
+		@if (administrator == null)
+		{
+			<p><em>Loading...</em></p>
+		}
+		else 
+		{
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Administrator ID</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" value="@Id" disabled>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">First Name</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" @bind="administratorData.FirstName">
+					<span class="text-danger">@Errors["FirstName"]?[0]</span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Middle Name</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" @bind="administratorData.MiddleName">
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Last Name</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" @bind="administratorData.LastName">
+					<span class="text-danger">@Errors["LastName"]?[0]</span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Email Address</label>
+				<div class="col-md-8">
+					<input type="email" class="form-control" @bind="administratorData.Email">
+					<span class="text-danger">@Errors["Email"]?[0]</span>
+
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Position</label>
+				<div class="col-md-8">
+					<select class="form-select" @bind="administratorData.Role">
+						<option value="Administrator">Administrator</option>
+						<option value="Staff">Staff</option>
+					</select>
+					<span class="text-danger">@Errors["Role"]?[0]</span>
+				</div>
+
+
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Phone Number</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" @bind="administratorData.Phone">
+					<span class="text-danger">@Errors["Phone"]?[0]</span>
+
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">Profile Picture</label>
+				<div class="col-md-8">
+					<input type="file" class="form-control" @onchange="HandleFileSelected" />
+					<span class="text-danger">@Errors["Profile_Picture"]?[0]</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="offset-md-4 col-md-4 d-grid">
+					<button class="btn btn-primary" @onclick="SaveAdministrator">Submit</button>
+				</div>
+				<div class="offset-md-4 col-md-4 d-grid">
+					<a href="/Administrator" class="btn btn-danger">Cancel</a>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+
+@using Census_APP.Models;
+@using System.Text.Json.Nodes
+@inject HttpClient Http
+@inject NavigationManager navManager
+@code {
+
+	[Parameter]
+	public int Id { set; get; }
+	public Administrator? administrator = null;
+	public AdministratorDTO administratorData { set; get; } = new();
+	public JsonNode Errors { set; get; } = new JsonObject();
+
+	protected override async Task OnParametersSetAsync() 
+	{
+		try
+		{
+			administrator = await Http.GetFromJsonAsync<Administrator>("http://localhost:5277/API/Administrator/" + Id);
+			administratorData.FirstName = administrator?.firstname ?? "";
+			administratorData.MiddleName = administrator?.middlename ?? "";
+			administratorData.LastName = administrator?.lastname ?? "";
+			administratorData.Email = administrator?.email ?? "";
+			administratorData.Role = administrator?.role ?? "";
+			administratorData.Phone = administrator?.phone ?? "";
+			administratorData.Profile_Picture = administrator?.profile_picture ?? "";
+			administratorData.Password = administrator?.password ?? "";
+		}
+		catch (Exception ex) 
+		{
+			Console.WriteLine("Exception : " + ex.Message);
+		}
+	}
+
+	private async Task HandleFileSelected(ChangeEventArgs e)
+	{
+		var file = (e.Value as IReadOnlyList<IBrowserFile>)?.FirstOrDefault();
+		if (file != null)
+		{
+			// Convert file to Base64
+			var base64 = await ConvertToBase64(file);
+			administratorData.Profile_Picture = base64;
+		}
+	}
+
+	private async Task<string> ConvertToBase64(IBrowserFile file)
+	{
+		using (var stream = new MemoryStream())
+		{
+			await file.OpenReadStream().CopyToAsync(stream);
+			return Convert.ToBase64String(stream.ToArray());
+		}
+	}
+
+
+	protected async Task SaveAdministrator()
+	{
+		var response = await Http.PutAsJsonAsync("http://localhost:5277/API/Administrator/" + Id, administratorData);
+
+		if (response.IsSuccessStatusCode)
+		{
+			navManager.NavigateTo("/Administrator");
+		}
+		else 
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Errors = jsonResponse?["Errors"] ?? new JsonObject();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

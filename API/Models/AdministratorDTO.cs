@@ -14,8 +14,7 @@ namespace API.Models
         [Required, EmailAddress]
         public string Email { get; set; } = "";
 
-        [Required(ErrorMessage = "Strong Password is required!")]
-        public string Password { get; set; } = "";
+        public string? Password { get; set; }
 
         [Required(ErrorMessage = "Job Position/Role is required!")]
         public string Role { get; set; } = "";

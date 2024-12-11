@@ -1,16 +1,16 @@
 self.assetsManifest = {
-  "version": "WQkLIJ2J",
+  "version": "Q5tESSWM",
   "assets": [
     {
       "hash": "sha256-TuloMSD/4oujolWPssf+R8T06UL+53ehXd0vUMAesw0=",
       "url": "Census_APP.styles.css"
     },
     {
-      "hash": "sha256-okFfAZLoXKkxfZS8YX12eAV6fk5tPFnDjHQYxYRes0w=",
+      "hash": "sha256-R8c2CjIPjM/GdBy5AuK2RT00IyWjhv03l+m+ewiGdWk=",
       "url": "_framework/Census_APP.pdb"
     },
     {
-      "hash": "sha256-slrR3h/dUSQiYfgC3EmXE8vM0tuWixYx7jzvXisO9a4=",
+      "hash": "sha256-S/t05JQRnmvl6S+Cb8VN43ImTKC6FrMdNOUkkL50jY0=",
       "url": "_framework/Census_APP.wasm"
     },
     {
@@ -770,7 +770,7 @@ self.assetsManifest = {
       "url": "_framework/WindowsBase.wasm"
     },
     {
-      "hash": "sha256-4endu4/VnXUrEbOSJ3Lb0QR/isUwzQ+okz2/+mhHQks=",
+      "hash": "sha256-IcIoWTJF70hInCrLzN0iJhs6RSU5i+hL4T4pI1nYoi4=",
       "url": "_framework/blazor.boot.json"
     },
     {

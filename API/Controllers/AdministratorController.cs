@@ -18,9 +18,12 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<Administrator> getAdministrators() 
-        { 
-            return context.Administrators.OrderByDescending(a => a.adminID).ToList();
+        public List<Administrator> GetAdministrators()
+        {
+            return context.Administrators
+                          .Where(a => a.isDeleted != "1") 
+                          .OrderByDescending(a => a.adminID)
+                          .ToList();
         }
 
         [HttpGet("{id}")]

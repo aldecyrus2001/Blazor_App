@@ -33,7 +33,7 @@ else {
 					<td>@(administrator.created_at.ToString("MM/dd/yyyy"))</td>
 					<td style="white-space:nowrap">
 						<a href="/Administrator/Edit/@administrator.adminID" class="btn btn-primary btn-sm">Edit</a>
-						<a href="/Administrator/Delete/@administrator.adminID" class="btn btn-danger btn-sm">Delete</a>
+						<button @onclick="() => DeleteAdministrator(administrator.adminID)" class="btn btn-danger btn-sm">Delete</button>
 					</td>
 				</tr>
 			}
@@ -43,6 +43,9 @@ else {
 }
 
 @inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@inject IJSRuntime JSRuntime
 @code {
 
 	private List<Administrator>? administrators;
@@ -50,6 +53,33 @@ else {
 	protected override async Task OnInitializedAsync() 
 	{
 		administrators = await Http.GetFromJsonAsync<List<Administrator>>("http://localhost:5277/API/Administrator");
+	}
+
+	protected async Task DeleteAdministrator(int Id)
+	{
+		var response = await Http.PutAsync($"http://localhost:5277/API/Administrator/{Id}/delete", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			// Show alert message
+			await JSRuntime.InvokeVoidAsync("alert", "Administrator deleted successfully!");
+
+			// Navigate back to the Administrator page
+			navManager.NavigateTo("/Administrator", true);
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Console.WriteLine(jsonResponse);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
 	}
 
 }

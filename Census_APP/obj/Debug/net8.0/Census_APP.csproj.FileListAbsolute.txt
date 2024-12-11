@@ -1038,6 +1038,7 @@ C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\Census_APP.dl
 C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\refint\Census_APP.dll
 C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\Census_APP.pdb
 C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\ref\Census_APP.dll
-C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\f5rng5la4w-aunwunw652.gz
-C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\89i0x1q5ud-6b9uj90kqz.gz
-C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\1ieh7wbu98-lbcmuxch3t.gz
+C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\Census_APP.sourcelink.json
+C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\f5rng5la4w-der0ief1cj.gz
+C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\89i0x1q5ud-tblf3jpac5.gz
+C:\Users\Anonymous\source\repos\WebApp\Census_APP\obj\Debug\net8.0\compressed\1ieh7wbu98-ljqrj4wqrh.gz
