@@ -1,0 +1,163 @@
+﻿@page "/Administrator/Create"
+@using Census_APP.Models;
+
+<div class="row">
+	<div class="col-lg-8">
+		<h1 class="mb-5">New Administrator</h1>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">First Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="administratorData.FirstName">
+			<span class="text-danger">@Errors["FirstName"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Middle Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="administratorData.MiddleName">
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Last Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="administratorData.LastName">
+			<span class="text-danger">@Errors["LastName"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Email Address</label>
+		<div class="col-md-8">
+			<input type="email" class="form-control" @bind="administratorData.Email">
+			<span class="text-danger">@Errors["Email"]?[0]</span>
+
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Password</label>
+		<div class="col-md-8">
+			<input type="password" class="form-control" @bind="administratorData.Password">
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Confirm Password</label>
+		<div class="col-md-8">
+			<input type="password" class="form-control" @bind="confirmPassword">
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Position</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="administratorData.Role">
+				<option value="Administrator">Administrator</option>
+				<option value="Staff">Staff</option>
+			</select>
+			<span class="text-danger">@Errors["Role"]?[0]</span>
+		</div>
+		
+
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Phone Number</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="administratorData.Phone">
+			<span class="text-danger">@Errors["Phone"]?[0]</span>
+
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Profile Picture</label>
+		<div class="col-md-8">
+			<input type="file" class="form-control" @onchange="HandleFileSelected" />
+			<span class="text-danger">@Errors["Profile_Picture"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="text-danger" style="margin-left: 33.3333%; margin-top: -15px;">
+		@passwordMismatchMessage
+	</div>
+
+	<div class="row">
+		<div class="offset-md-4 col-md-4 d-grid">
+			<button class="btn btn-primary" @onclick="SaveAdministrator">Submit</button>
+		</div>
+		<div class="offset-md-4 col-md-4 d-grid">
+			<a href="/Administrator" class="btn btn-danger">Cancel</a>
+		</div>
+	</div>
+</div>
+
+@inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@using System.Net.Http.Json;
+@using Microsoft.AspNetCore.Components.Forms
+@code {
+
+	public AdministratorDTO administratorData { set; get; } = new();
+	private string? confirmPassword { get; set; }
+	private string? passwordMismatchMessage { get; set; }
+	public JsonNode Errors { set; get; } = new JsonObject();
+
+	private async Task HandleFileSelected(ChangeEventArgs e)
+	{
+		var file = (e.Value as IReadOnlyList<IBrowserFile>)?.FirstOrDefault();
+		if (file != null)
+		{
+			// Convert file to Base64
+			var base64 = await ConvertToBase64(file);
+			administratorData.Profile_Picture = base64;
+		}
+	}
+
+	private async Task<string> ConvertToBase64(IBrowserFile file)
+	{
+		using (var stream = new MemoryStream())
+		{
+			await file.OpenReadStream().CopyToAsync(stream);
+			return Convert.ToBase64String(stream.ToArray());
+		}
+	}
+
+	protected async Task SaveAdministrator()
+	{
+		if (administratorData.Password != confirmPassword)
+		{
+			passwordMismatchMessage = "Passwords do not match!";
+			return;
+		}
+
+		passwordMismatchMessage = null;
+
+		var response = await Http.PostAsJsonAsync("http://localhost:5277/API/Administrator", administratorData);
+
+		if (response.IsSuccessStatusCode)
+		{
+			navManager.NavigateTo("/Administrator");
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("JSON Response: \n" + strResponse);
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Errors = jsonResponse?["errors"] ?? new JsonObject();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

@@ -1,0 +1,51 @@
+﻿@page "/Administrators"
+
+
+<div class="page-bar">
+	<div class="page-title-breadcrumb">
+		<div class=" pull-left">
+			<div class="page-title">All Administrator Lists</div>
+		</div>
+		<ol class="breadcrumb page-breadcrumb pull-right">
+			<li>
+				<i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+										   href="./dashboard.php">Dashboard</a>&nbsp;<i class="fa fa-angle-right"></i>
+			</li>
+			<li class="active">All Admin</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+		<div class="card  card-box">
+			<div class="card-head">
+				<header>Administrator's List |</header>
+				<a href="/Administrator/Create" class="btn btn-success p-1">Add Administrator</a>
+			</div>
+			<div class="card-body ">
+				<div class="table-wrap">
+					<div class="table-responsive">
+						<table class="table display product-overview mb-30" id="support_table">
+							<thead>
+								<tr>
+									<th>Admin ID</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>Date Of Created</th>
+									<th>Status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+}

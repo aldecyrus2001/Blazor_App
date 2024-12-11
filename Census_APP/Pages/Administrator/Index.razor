@@ -1,0 +1,55 @@
+﻿
+@page "/Administrator"
+@namespace Census_APP.Models
+
+<h1 class="text-center mb-3">List of Clients</h1>
+
+<a href="/Administrator/Create" class="btn btn-primary mb-3">New Administrator</a>
+
+@if (administrators == null) 
+{
+	<p><em>Loading..</em></p>
+}
+else {
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th>Date Created</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var administrator in administrators)
+			{
+				<tr>
+					<td>@administrator.adminID</td>
+					<td>@(administrator.firstname + " " + administrator.lastname)</td>
+					<td>@administrator.email</td>
+					<td>@administrator.role</td>
+					<td>@(administrator.created_at.ToString("MM/dd/yyyy"))</td>
+					<td style="white-space:nowrap">
+						<a href="/Administrator/Edit/@administrator.adminID" class="btn btn-primary btn-sm">Edit</a>
+						<a href="/Administrator/Delete/@administrator.adminID" class="btn btn-danger btn-sm">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+}
+
+@inject HttpClient Http
+@code {
+
+	private List<Administrator>? administrators;
+
+	protected override async Task OnInitializedAsync() 
+	{
+		administrators = await Http.GetFromJsonAsync<List<Administrator>>("http://localhost:5277/API/Administrator");
+	}
+
+}
