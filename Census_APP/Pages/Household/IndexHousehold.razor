@@ -1,0 +1,60 @@
+﻿@page "/Household"
+@namespace Census_APP.Models
+
+<h1 class="text-center mb-3">List of Clients</h1>
+
+<a href="/Household/Create" class="btn btn-primary mb-3">New Household</a>
+
+@if (households == null)
+{
+	<p><em>Loading..</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th>Date Created</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var household in households)
+			{
+				<tr>
+					<td>@household.HouseholdID</td>
+					<td>@household.Family_Name</td>
+					<td>@household.Email</td>
+					<td>@household.House_Type</td>
+					<td>@household.Religion</td>
+					<td style="white-space:nowrap">
+						<a href="/Household/Edit/@household.HouseholdID" class="btn btn-primary btn-sm">Edit</a>
+						<a href="/Resident/Create/@household.HouseholdID" class="btn btn-primary btn-sm">Add Member</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+}
+
+@inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@inject IJSRuntime JSRuntime
+@code {
+
+	private List<Household>? households;
+
+	protected override async Task OnInitializedAsync()
+	{
+		households = await Http.GetFromJsonAsync<List<Household>>("http://localhost:5277/API/Household");
+	}
+
+	
+
+}

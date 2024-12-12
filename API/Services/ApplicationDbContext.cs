@@ -10,9 +10,13 @@ namespace API.Services
         }
 
         public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Households> households { get; set; }
+        public DbSet<Resident> residents { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Administrator>().HasKey(a => a.adminID);
+            modelBuilder.Entity<Households>().HasKey(h => h.HouseholdID);
+            modelBuilder.Entity<Resident>().HasKey(r => r.residentID);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,0 +1,273 @@
+﻿@page "/Resident/Edit/{Id:int}"
+<div class="row">
+	<div class="col-lg-8">
+		<h1 class="mb-5">Edit Household</h1>
+	</div>
+
+	@if (resident == null)
+	{
+		<p><em>Loading...</em></p>
+	}
+	else
+	{
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Resident ID</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" value="@Id" disabled>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Household ID</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.HouseholdID" readonly>
+				<span class="text-danger">@Errors["HouseholdID"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">First Name</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.First_name">
+				<span class="text-danger">@Errors["First_name"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Middle Name</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.Middle_name">
+				<span class="text-danger">@Errors["Middle_name"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Last Name</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.Last_name">
+				<span class="text-danger">@Errors["Last_name"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Email Address</label>
+			<div class="col-md-8">
+				<input type="email" class="form-control" @bind="residentData.Email">
+				<span class="text-danger">@Errors["Email"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Relationship To Head?</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Relation_to_head">
+					<option value="Head">Head</option>
+					<option value="Spouse">Spouse</option>
+					<option value="Child">Child</option>
+					<option value="Parent">Parent</option>
+					<option value="Sibling">Sibling</option>
+					<option value="Grandparent">Grandparent</option>
+					<option value="Grandchild">Grandchild</option>
+				</select>
+				<span class="text-danger">@Errors["Relation_to_head"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Gender</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Gender">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+				<span class="text-danger">@Errors["Gender"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Birth_date</label>
+			<div class="col-md-8">
+				<input type="date" class="form-control" @bind="residentData.Birth_date">
+				<span class="text-danger">@Errors["Birth_date"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Is Head Of Family?</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Is_head_of_household">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+				<span class="text-danger">@Errors["Is_head_of_household"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Has Disabilities?</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Has_disability">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+				<span class="text-danger">@Errors["Has_disability"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Existing Conditions</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.Pre_existing_condition">
+				<span class="text-danger">@Errors["Pre_existing_condition"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Covid Vaccinated?</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Covid_vaccinated">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+				<span class="text-danger">@Errors["Covid_vaccinated"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Highest Attainment</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Highest_level_completed">
+					<option value="No Formal Education">No Formal Education</option>
+					<option value="Some Elementary School">Some Elementary School</option>
+					<option value="Elementary School Graduate">Elementary School Graduate</option>
+					<option value="Some High School">Some High School</option>
+					<option value="High School Graduate">High School Graduate</option>
+					<option value="Some College">Some College</option>
+					<option value="Associate Degree">Associate Degree</option>
+					<option value="Bachelor's Degree">Bachelor's Degree</option>
+					<option value="Master's Degree">Master's Degree</option>
+					<option value="Doctoral Degree">Doctoral Degree</option>
+					<option value="Postdoctoral Studies">Postdoctoral Studies</option>
+				</select>
+				<span class="text-danger">@Errors["Highest_level_completed"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">School Name</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.School_name">
+				<span class="text-danger">@Errors["School_name"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Employment Status</label>
+			<div class="col-md-8">
+				<select class="form-select" @bind="residentData.Employment_status">
+					<option value="Employed">Employed</option>
+					<option value="Unemployed">Unemployed</option>
+					<option value="Self-Employed">Self-Employed</option>
+					<option value="Student">Student</option>
+					<option value="Retired">Retired</option>
+					<option value="Household Worker">Household Worker</option>
+					<option value="On Leave">On Leave</option>
+					<option value="Looking for Work">Looking for Work</option>
+				</select>
+				<span class="text-danger">@Errors["Employment_status"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Job Name</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" @bind="residentData.Job_title">
+				<span class="text-danger">@Errors["Job_title"]?[0]</span>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-md-4 col-form-label">Monthly Income</label>
+			<div class="col-md-8">
+				<input type="number" class="form-control" @bind="residentData.Monthly_income">
+				<span class="text-danger">@Errors["Monthly_income"]?[0]</span>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="offset-md-4 col-md-4 d-grid">
+				<button class="btn btn-primary" @onclick="SaveResident">Submit</button>
+			</div>
+			<div class="offset-md-4 col-md-4 d-grid">
+				<a href="/Household" class="btn btn-danger">Cancel</a>
+			</div>
+		</div>
+	}
+</div>
+
+@using Census_APP.Models;
+@using System.Text.Json.Nodes
+@inject HttpClient Http
+@inject NavigationManager navManager
+@code {
+
+	[Parameter]
+	public int Id { set; get; }
+	public Resident? resident = null;
+	public ResidentDTO residentData { set; get; } = new();
+	public JsonNode Errors { set; get; } = new JsonObject();
+
+	protected override async Task OnParametersSetAsync()
+	{
+		try
+		{
+			resident = await Http.GetFromJsonAsync<Resident>("http://localhost:5277/API/Resident/" + Id);
+			residentData.First_name = resident.first_name;
+			residentData.Middle_name = resident.middle_name;
+			residentData.Last_name = resident.last_name;
+			residentData.Email = resident.email;
+			residentData.Relation_to_head = resident.relation_to_head;
+			residentData.Gender = resident.gender;
+			residentData.Birth_date = resident.birth_date;
+			residentData.Is_head_of_household = resident.is_head_of_household;
+			residentData.Has_disability = resident.has_disability;
+			residentData.Pre_existing_condition = resident.pre_existing_condition;
+			residentData.Covid_vaccinated = resident.covid_vaccinated;
+			residentData.Highest_level_completed = resident.highest_level_completed;
+			residentData.School_name = resident.school_name;
+			residentData.Employment_status = resident.employment_status;
+			residentData.Job_title = resident.job_title;
+			residentData.Monthly_income = resident.monthly_income;
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("Exception : " + ex.Message);
+		}
+	}
+
+
+	protected async Task SaveResident()
+	{
+		var response = await Http.PutAsJsonAsync("http://localhost:5277/API/Resident/" + Id, residentData);
+
+		if (response.IsSuccessStatusCode)
+		{
+			navManager.NavigateTo("/Resident");
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Errors = jsonResponse?["Errors"] ?? new JsonObject();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

@@ -1,21 +1,29 @@
 self.assetsManifest = {
-  "version": "Q5tESSWM",
+  "version": "mD5blYQW",
   "assets": [
     {
       "hash": "sha256-TuloMSD/4oujolWPssf+R8T06UL+53ehXd0vUMAesw0=",
       "url": "Census_APP.styles.css"
     },
     {
-      "hash": "sha256-R8c2CjIPjM/GdBy5AuK2RT00IyWjhv03l+m+ewiGdWk=",
+      "hash": "sha256-nQXuCGHos7iwp2WxRUgarKmWgJYChaVQp2NajgNU3V8=",
+      "url": "_framework/Blazored.SessionStorage.wasm"
+    },
+    {
+      "hash": "sha256-J8oei7zGwM5m/eLJmNwHnLw0MfjA+pxa29J9sXs5mUg=",
       "url": "_framework/Census_APP.pdb"
     },
     {
-      "hash": "sha256-S/t05JQRnmvl6S+Cb8VN43ImTKC6FrMdNOUkkL50jY0=",
+      "hash": "sha256-oZ/ygrz84aSoVLu2X+t1E1him4G9nVwi0OuNAxoqxoA=",
       "url": "_framework/Census_APP.wasm"
     },
     {
       "hash": "sha256-W1OqRV83imd3SG/v4PAlCa5m/3RA9n5ysXT7G46jKKc=",
       "url": "_framework/Microsoft.AspNetCore.Authorization.wasm"
+    },
+    {
+      "hash": "sha256-pRH7oMIS7g7h0yAK3YJSmhKCrYxGX/6ddoisYR4b/mA=",
+      "url": "_framework/Microsoft.AspNetCore.Components.Authorization.wasm"
     },
     {
       "hash": "sha256-uygu36HN/qUHLMopvhHgNiRvJHtoPqdkgtGxxdr1nY8=",
@@ -770,7 +778,7 @@ self.assetsManifest = {
       "url": "_framework/WindowsBase.wasm"
     },
     {
-      "hash": "sha256-IcIoWTJF70hInCrLzN0iJhs6RSU5i+hL4T4pI1nYoi4=",
+      "hash": "sha256-CTXJULsj9P6hsgWHe4BywJEgHNljSY/3ORZDAmm6Q5c=",
       "url": "_framework/blazor.boot.json"
     },
     {

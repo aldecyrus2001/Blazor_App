@@ -28,6 +28,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Layout/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Administrator/Create.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYXRvclxDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +46,34 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Household/CreateHousehold.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG91c2Vob2xkXENyZWF0ZUhvdXNlaG9sZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Household/EditHousehold.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG91c2Vob2xkXEVkaXRIb3VzZWhvbGQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Household/IndexHousehold.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG91c2Vob2xkXEluZGV4SG91c2Vob2xkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Login/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5cTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Residents/CreateResident.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzaWRlbnRzXENyZWF0ZVJlc2lkZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Residents/EditResident.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzaWRlbnRzXEVkaXRSZXNpZGVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anonymous/source/repos/WebApp/Census_APP/Pages/Residents/IndexResidents.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzaWRlbnRzXEluZGV4UmVzaWRlbnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Anonymous/source/repos/WebApp/Census_APP/_Imports.razor]

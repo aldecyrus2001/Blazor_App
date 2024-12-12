@@ -1,0 +1,254 @@
+﻿@page "/Household/Create"
+@using Census_APP.Models;
+
+<div class="row">
+	<div class="col-lg-8">
+		<h1 class="mb-5">New Household</h1>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Family Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.family_Name">
+			<span class="text-danger">@Errors["family_Name"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Address</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.address">
+			<span class="text-danger">@Errors["address"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Income</label>
+		<div class="col-md-8">
+			<input type="number" class="form-control" @bind="householdData.income">
+			<span class="text-danger">@Errors["income"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Email</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.email">
+			<span class="text-danger">@Errors["email"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Phone Number</label>
+		<div class="col-md-8">
+			<input type="number" class="form-control" @bind="householdData.phone">
+			<span class="text-danger">@Errors["phone"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">House Type</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.house_Type">
+				<option value="Detached">Detached</option>
+				<option value="Semi-Detached">Semi-Detached</option>
+				<option value="Townhouse/Rowhouse">Townhouse/Rowhouse</option>
+				<option value="Apartment">Apartment</option>
+				<option value="Condominium">Condominium</option>
+				<option value="Bungalow">Bungalow</option>
+				<option value="Cottage">Cottage</option>
+				<option value="Duplex">Duplex</option>
+				<option value="Villa">Villa</option>
+				<option value="Mobile Home">Mobile Home</option>
+			</select>
+			<span class="text-danger">@Errors["house_Type"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Ownership Type</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.ownership">
+				<option value="Owned">Owned</option>
+				<option value="Mortgaged">Mortgaged</option>
+				<option value="Rented">Rented</option>
+				<option value="Leased">Leased</option>
+				<option value="Co-Ownership">Co-Ownership</option>
+				<option value="Inherited">Inherited</option>
+				<option value="Government-Owned">Government-Owned</option>
+				<option value="Company-Owned">Company-Owned</option>
+				<option value="Shared Ownership">Shared Ownership</option>
+				<option value="Temporary Shelter">Temporary Shelter</option>
+			</select>
+			<span class="text-danger">@Errors["ownership"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Profile Picture</label>
+		<div class="col-md-8">
+			<input type="file" class="form-control" @onchange="HandleFileSelected" />
+			<span class="text-danger">@Errors["profile_Picture"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Note</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.note">
+			<span class="text-danger">@Errors["note"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Ethinicity</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.ethnicity">
+				<option value="Tagalog">Tagalog</option>
+				<option value="Cebuano">Cebuano</option>
+				<option value="Ilocano">Ilocano</option>
+				<option value="Hiligaynon">Hiligaynon</option>
+				<option value="Bicolano">Bicolano</option>
+				<option value="Waray">Waray</option>
+				<option value="Kapampangan">Kapampangan</option>
+				<option value="Pangasinense">Pangasinense</option>
+				<option value="Maranao">Maranao</option>
+				<option value="Maguindanaoan">Maguindanaoan</option>
+				<option value="Tausug">Tausug</option>
+				<option value="Zamboangueño">Zamboangueño</option>
+				<option value="Aeta/Agta">Aeta/Agta</option>
+				<option value="Mangyan">Mangyan</option>
+				<option value="Ifugao">Ifugao</option>
+				<option value="Igorot">Igorot</option>
+				<option value="Kalinga">Kalinga</option>
+				<option value="T’boli">T’boli</option>
+				<option value="Blaan">Blaan</option>
+				<option value="Yakan">Yakan</option>
+				<option value="Badjao">Badjao</option>
+				<option value="Lumad">Lumad</option>
+			</select>
+			<span class="text-danger">@Errors["ethnicity"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Religion</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.religion">
+				<option value="Roman Catholic">Roman Catholic</option>
+				<option value="Islam">Islam</option>
+				<option value="Evangelical Christianity">Evangelical Christianity</option>
+				<option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
+				<option value="Protestantism">Protestantism</option>
+				<option value="Aglipayan Church">Aglipayan Church</option>
+				
+			</select>
+			<span class="text-danger">@Errors["ethnicity"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Primary Language</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.primary_Language">
+			<span class="text-danger">@Errors["primary_Language"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Secondary Language</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="householdData.secondary_Language">
+			<span class="text-danger">@Errors["secondary_Language"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Has Electricity?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.has_Electricity">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+				
+			</select>
+			<span class="text-danger">@Errors["has_Electricity"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Has Water?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="householdData.has_Water">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+
+			</select>
+			<span class="text-danger">@Errors["has_Water"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="offset-md-4 col-md-4 d-grid">
+			<button class="btn btn-primary" @onclick="SaveHousehold">Submit</button>
+		</div>
+		<div class="offset-md-4 col-md-4 d-grid">
+			<a href="/Household" class="btn btn-danger">Cancel</a>
+		</div>
+	</div>
+</div>
+
+@inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@using System.Net.Http.Json;
+@using Microsoft.AspNetCore.Components.Forms
+@code {
+
+	public HouseholdDTO householdData { set; get; } = new();
+	public JsonNode Errors { set; get; } = new JsonObject();
+
+	private async Task HandleFileSelected(ChangeEventArgs e)
+	{
+		var file = (e.Value as IReadOnlyList<IBrowserFile>)?.FirstOrDefault();
+		if (file != null)
+		{
+			var base64 = await ConvertToBase64(file);
+			householdData.profile_Picture = base64;
+		}
+	}
+
+	private async Task<string> ConvertToBase64(IBrowserFile file)
+	{
+		using (var stream = new MemoryStream())
+		{
+			await file.OpenReadStream().CopyToAsync(stream);
+			return Convert.ToBase64String(stream.ToArray());
+		}
+	}
+
+	protected async Task SaveHousehold()
+	{
+		
+		var response = await Http.PostAsJsonAsync("http://localhost:5277/API/Household", householdData);
+
+		if (response.IsSuccessStatusCode)
+		{
+			navManager.NavigateTo("/Household");
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("JSON Response: \n" + strResponse);
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Errors = jsonResponse?["errors"] ?? new JsonObject();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

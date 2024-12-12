@@ -1,0 +1,83 @@
+﻿@page "/Resident"
+@namespace Census_APP.Models
+
+<h1 class="text-center mb-3">List of Resident</h1>
+
+@if (resident == null)
+{
+	<p><em>Loading..</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Birth Date</th>
+				<th>Covid Vaccinated</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var residents in resident)
+			{
+				<tr>
+					<td>@residents.residentID</td>
+					<td>@(residents.first_name + " " + residents.last_name)</td>
+					<td>@residents.email</td>
+					<td>@residents.birth_date</td>
+					<td>@residents.covid_vaccinated</td>
+					<td style="white-space:nowrap">
+						<a href="/Resident/Edit/@residents.residentID" class="btn btn-primary btn-sm">Edit</a>
+						<button @onclick="() => DeleteResident(residents.residentID)" class="btn btn-danger btn-sm">Delete</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+}
+
+@inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@inject IJSRuntime JSRuntime
+@code {
+
+	private List<Resident>? resident;
+
+	protected override async Task OnInitializedAsync()
+	{
+		resident = await Http.GetFromJsonAsync<List<Resident>>("http://localhost:5277/API/Resident");
+	}
+
+	protected async Task DeleteResident(int Id)
+	{
+		var response = await Http.PutAsync($"http://localhost:5277/API/Resident/{Id}/delete", null);
+
+		if (response.IsSuccessStatusCode)
+		{
+			// Show alert message
+			await JSRuntime.InvokeVoidAsync("alert", "Resident deleted successfully!");
+
+			// Navigate back to the Administrator page
+			navManager.NavigateTo("/Resident", true);
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Console.WriteLine(jsonResponse);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

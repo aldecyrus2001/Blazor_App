@@ -1,0 +1,247 @@
+﻿@page "/Resident/Create/{HouseholdID}"
+@using Census_APP.Models;
+
+<div class="row">
+	<div class="col-lg-8">
+		<h1 class="mb-5">New Family Member</h1>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Household ID</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.HouseholdID" readonly>
+			<span class="text-danger">@Errors["HouseholdID"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">First Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.First_name">
+			<span class="text-danger">@Errors["First_name"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Middle Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.Middle_name">
+			<span class="text-danger">@Errors["Middle_name"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Last Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.Last_name">
+			<span class="text-danger">@Errors["Last_name"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Email Address</label>
+		<div class="col-md-8">
+			<input type="email" class="form-control" @bind="residentData.Email">
+			<span class="text-danger">@Errors["Email"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Relationship To Head?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Relation_to_head">
+				<option value="Head">Head</option>
+				<option value="Spouse">Spouse</option>
+				<option value="Child">Child</option>
+				<option value="Parent">Parent</option>
+				<option value="Sibling">Sibling</option>
+				<option value="Grandparent">Grandparent</option>
+				<option value="Grandchild">Grandchild</option>
+			</select>
+			<span class="text-danger">@Errors["Relation_to_head"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Gender</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Gender">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+			<span class="text-danger">@Errors["Gender"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Birth_date</label>
+		<div class="col-md-8">
+			<input type="date" class="form-control" @bind="residentData.Birth_date">
+			<span class="text-danger">@Errors["Birth_date"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Is Head Of Family?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Is_head_of_household">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+			<span class="text-danger">@Errors["Is_head_of_household"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Has Disabilities?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Has_disability">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+			<span class="text-danger">@Errors["Has_disability"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Existing Conditions</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.Pre_existing_condition">
+			<span class="text-danger">@Errors["Pre_existing_condition"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Covid Vaccinated?</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Covid_vaccinated">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+			<span class="text-danger">@Errors["Covid_vaccinated"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Highest Attainment</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Highest_level_completed">
+				<option value="No Formal Education">No Formal Education</option>
+				<option value="Some Elementary School">Some Elementary School</option>
+				<option value="Elementary School Graduate">Elementary School Graduate</option>
+				<option value="Some High School">Some High School</option>
+				<option value="High School Graduate">High School Graduate</option>
+				<option value="Some College">Some College</option>
+				<option value="Associate Degree">Associate Degree</option>
+				<option value="Bachelor's Degree">Bachelor's Degree</option>
+				<option value="Master's Degree">Master's Degree</option>
+				<option value="Doctoral Degree">Doctoral Degree</option>
+				<option value="Postdoctoral Studies">Postdoctoral Studies</option>
+			</select>
+			<span class="text-danger">@Errors["Highest_level_completed"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">School Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.School_name">
+			<span class="text-danger">@Errors["School_name"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Employment Status</label>
+		<div class="col-md-8">
+			<select class="form-select" @bind="residentData.Employment_status">
+				<option value="Employed">Employed</option>
+				<option value="Unemployed">Unemployed</option>
+				<option value="Self-Employed">Self-Employed</option>
+				<option value="Student">Student</option>
+				<option value="Retired">Retired</option>
+				<option value="Household Worker">Household Worker</option>
+				<option value="On Leave">On Leave</option>
+				<option value="Looking for Work">Looking for Work</option>
+			</select>
+			<span class="text-danger">@Errors["Employment_status"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Job Name</label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" @bind="residentData.Job_title">
+			<span class="text-danger">@Errors["Job_title"]?[0]</span>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-md-4 col-form-label">Monthly Income</label>
+		<div class="col-md-8">
+			<input type="number" class="form-control" @bind="residentData.Monthly_income">
+			<span class="text-danger">@Errors["Monthly_income"]?[0]</span>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="offset-md-4 col-md-4 d-grid">
+			<button class="btn btn-primary" @onclick="SaveResident">Submit</button>
+		</div>
+		<div class="offset-md-4 col-md-4 d-grid">
+			<a href="/Household" class="btn btn-danger">Cancel</a>
+		</div>
+	</div>
+</div>
+
+@inject HttpClient Http
+@inject NavigationManager navManager
+@using System.Text.Json.Nodes
+@using System.Net.Http.Json;
+@using Microsoft.AspNetCore.Components.Forms
+@code {
+
+	[Parameter] public string HouseholdID { get; set; }
+
+	public ResidentDTO residentData { set; get; } = new();
+	public JsonNode Errors { set; get; } = new JsonObject();
+
+	protected override void OnInitialized()
+	{
+		if (int.TryParse(HouseholdID, out int parsedHouseholdID))
+		{
+			residentData.HouseholdID = parsedHouseholdID;
+		}
+		else
+		{
+			Console.WriteLine("Invalid HouseholdID format");
+			residentData.HouseholdID = 0;
+		}
+	}
+
+	protected async Task SaveResident()
+	{
+
+		var response = await Http.PostAsJsonAsync("http://localhost:5277/API/Resident", residentData);
+
+		if (response.IsSuccessStatusCode)
+		{
+			navManager.NavigateTo("/Resident");
+		}
+		else
+		{
+			var strResponse = await response.Content.ReadAsStringAsync();
+			Console.WriteLine("JSON Response: \n" + strResponse);
+			try
+			{
+				var jsonResponse = JsonNode.Parse(strResponse);
+				Errors = jsonResponse?["errors"] ?? new JsonObject();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error parsing response: {ex.Message}");
+			}
+		}
+	}
+
+}

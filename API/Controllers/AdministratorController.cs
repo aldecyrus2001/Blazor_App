@@ -2,6 +2,7 @@
 using API.Models;
 using API.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -49,13 +50,17 @@ namespace API.Controllers
                 return BadRequest(validation);
             }
 
+            var passwordHasher = new PasswordHasher<Administrator>();
+            var hashedPassword = passwordHasher.HashPassword(null, administratoDto.Password);
+
+
             var admin = new Administrator
             {
                 firstname = administratoDto.FirstName,
                 middlename = administratoDto.MiddleName ?? "",
                 lastname = administratoDto.LastName,
                 email = administratoDto.Email,
-                password = administratoDto.Password,
+                password = hashedPassword,
                 role = administratoDto.Role,
                 phone = administratoDto.Phone,
                 profile_picture = administratoDto.Profile_Picture,
