@@ -2,36 +2,91 @@
 @page "/"
 @using Census_APP.Models;
 
-<div class="row">
-	<div class="col-lg-8">
-		<h1 class="mb-5">Login</h1>
-	</div>
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+				<div class="d-flex align-items-center mb-3 pb-1">
+					<i class="fas fa-cubes fa-2x me-3"></i>
+					<span class="h1 fw-bold mb-0">Login</span>
+				</div>
 
-	<div class="row mb-3">
-		<label class="col-md-4 col-form-label">Email</label>
-		<div class="col-md-8">
-			<input type="text" class="form-control" @bind="loginData.Email">
-		</div>
-	</div>
+                <div class="divider d-flex align-items-center my-4">
+                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                </div>
 
-	<div class="row mb-3">
-		<label class="col-md-4 col-form-label">Password</label>
-		<div class="col-md-8">
-			<input type="text" class="form-control" @bind="loginData.Password">
-			<span class="text-danger">@Errors["address"]?[0]</span>
-		</div>
-	</div>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+					<input type="email" id="form3Example3" @bind="loginData.Email" class="form-control form-control-lg"
+                           placeholder="Enter a valid email address" />
+                    <label class="form-label" for="form3Example3">Email address</label>
+                </div>
 
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-3">
+					<input type="password" id="form3Example4" @bind="loginData.Password" class="form-control form-control-lg"
+                           placeholder="Enter password" />
+                    <label class="form-label" for="form3Example4">Password</label>
+                </div>
 
-	<div class="row">
-		<div class="offset-md-4 col-md-4 d-grid">
-			<button class="btn btn-primary" @onclick="LoginAdministrator">Login</button>
-		</div>
-		<div class="offset-md-4 col-md-4 d-grid">
-			<a href="/Household" class="btn btn-danger">Cancel</a>
-		</div>
-	</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Checkbox -->
+                    <div class="form-check mb-0">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                        <label class="form-check-label" for="form2Example3">
+                            Remember me
+                        </label>
+                    </div>
+                    <a href="#!" class="text-body">Forgot password?</a>
+                </div>
+
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+							style="padding-left: 2.5rem; padding-right: 2.5rem;" @onclick="LoginAdministrator">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+@* <div class="row"> *@
+@* 	<div class="col-lg-8"> *@
+@* 		<h1 class="mb-5">Login</h1> *@
+@* 	</div> *@
+
+@* 	<div class="row mb-3"> *@
+@* 		<label class="col-md-4 col-form-label">Email</label> *@
+@* 		<div class="col-md-8"> *@
+@* 			<input type="text" class="form-control" @bind="loginData.Email"> *@
+@* 		</div> *@
+@* 	</div> *@
+
+@* 	<div class="row mb-3"> *@
+@* 		<label class="col-md-4 col-form-label">Password</label> *@
+@* 		<div class="col-md-8"> *@
+@* 			<input type="text" class="form-control" @bind="loginData.Password"> *@
+@* 			<span class="text-danger">@Errors["address"]?[0]</span> *@
+@* 		</div> *@
+@* 	</div> *@
+
+
+@* 	<div class="row"> *@
+@* 		<div class="offset-md-4 col-md-4 d-grid"> *@
+@* 			<button class="btn btn-primary" @onclick="LoginAdministrator">Login</button> *@
+@* 		</div> *@
+@* 		<div class="offset-md-4 col-md-4 d-grid"> *@
+@* 			<a href="/Household" class="btn btn-danger">Cancel</a> *@
+@* 		</div> *@
+@* 	</div> *@
+@* </div> *@
 
 @inject HttpClient Http
 @inject NavigationManager navManager

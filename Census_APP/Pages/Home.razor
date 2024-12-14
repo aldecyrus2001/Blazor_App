@@ -1,13 +1,74 @@
 ﻿@page "/Dashboard"
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 
+<style>
+    .icon-container {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    }
+
+        .icon-container i {
+            font-size: 1.5rem; /* Adjust icon size */
+            color: white;
+        }
+
+    .card-body .number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+</style>
+
 <PageTitle>Home</PageTitle>
 
 <h1>Dashboard</h1>
 
 @if (adminID != null)
 {
-    <p>Welcome, Admin ID: @adminID</p>
+    <div class="row">
+        <!-- Card 1 -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Administrators</h5>
+                    <p class="card-text fs-2">00</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Households</h5>
+                    <p class="card-text fs-2">00</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Residents</h5>
+                    <p class="card-text fs-2">00</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text fs-2">00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	
 }
 else
 {

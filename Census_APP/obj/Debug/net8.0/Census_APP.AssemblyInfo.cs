@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Census_APP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bee0454175ca72fc40ba8b2e74709afe3ba034e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9ff10f28c5d303463f1b97ea44b661c649b0775")]
 [assembly: System.Reflection.AssemblyProductAttribute("Census_APP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Census_APP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

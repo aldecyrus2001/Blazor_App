@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Census_APP",
   "resources": {
-    "hash": "sha256-iKvc68ottwTNgrot/WYb4WlDzRtJR/slp6U+MWYiJyo=",
+    "hash": "sha256-CLRFhgPPSX5p068GsP6bTPUj6OmLd1jNIpg41XaoRWs=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -211,10 +211,10 @@
       "mscorlib.wasm": "sha256-04e4k5XU8HWGB/dq/2+j84xzzGPflTs0IYWI0OxogVc=",
       "netstandard.wasm": "sha256-gnGZURPnoSmjXuYNCOJi5tt8qn2LRImWgue1Ru3/TDQ=",
       "System.Private.CoreLib.wasm": "sha256-6w3jYr0arcp8jnt4aeqh+AmqrLA6q7jl9rQYAwLzE0M=",
-      "Census_APP.wasm": "sha256-oZ/ygrz84aSoVLu2X+t1E1him4G9nVwi0OuNAxoqxoA="
+      "Census_APP.wasm": "sha256-Y/fPuOwW3UxzDhB1cj5DzpcUhgGC0F9ctPQMCppKkqs="
     },
     "pdb": {
-      "Census_APP.pdb": "sha256-J8oei7zGwM5m/eLJmNwHnLw0MfjA+pxa29J9sXs5mUg="
+      "Census_APP.pdb": "sha256-TC/P0aBQocuMCty11xcZaWoJbb5AEZz0Pzjw3k6bMjk="
     }
   },
   "cacheBootResources": true,
